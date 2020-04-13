@@ -2,6 +2,8 @@ package com.linkedin.learning.reactive;
 
 import java.util.Arrays;
 
+import com.linkedin.learning.reactive.observer.ConsolePrintObserver;
+
 import io.reactivex.Flowable;
 import io.reactivex.Observable;
 
@@ -11,7 +13,13 @@ public class Main {
         createFromArray(new Object[] {"Sandeep", "Komal", "Amandeep", "Neetika", "Neha", "Jatinder"});
         createFromOneElement();
         filterDataExample();
+        useCustomObserver();
     }
+
+	private static void useCustomObserver() {
+		Observable<Integer> observable = Observable.fromIterable(Arrays.asList(new Integer[] {1,2,3,4,5,6,7,8,9,10}));
+		observable.subscribe(new ConsolePrintObserver());
+	}
 
 	private static void filterDataExample() {
 		Observable<Integer> observable = Observable.fromIterable(Arrays.asList(new Integer[] {1,2,3,4,5,6,7,8,9,10}));
